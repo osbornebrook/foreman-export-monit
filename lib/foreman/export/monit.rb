@@ -71,11 +71,9 @@ module Foreman
       end
       
       def dotenv
-        cmd = ""
-        engine.env.each_pair do |var, env|
+        engine.env.each_pair.map do |var, env|
           cmd << "export #{var.upcase}=#{shell_quote(env)}"
-        end
-        cmd
+        end.join("\n")
       end
     end
   end
