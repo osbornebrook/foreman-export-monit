@@ -28,7 +28,9 @@ function start() {
       fi
     fi
     
-    <%= dotenv %>
+    <% dotenv.each do |e| %>
+        <%= e %>
+    <% end %>
 
     cd <%= engine.root %>
     <%= process.command %> >> $LOG_FILE 2>&1 &
