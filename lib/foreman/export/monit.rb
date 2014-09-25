@@ -69,6 +69,14 @@ module Foreman
       def stop_command(process_name, num)
         "/bin/sh -c 'PID_FILE=#{pid_file_for(process_name, num)} #{wrapper_path_for(process_name)} stop'"
       end
+      
+      def dotenv
+        cmd = ""
+        engine.env.each_pair do |var, env|
+          cmd << "export #{var.upcase}=#{shell_quote(env)}"
+        end
+        cmd
+      end
     end
   end
 end

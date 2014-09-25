@@ -27,8 +27,9 @@ function start() {
           exit $STATUS_UNKNOWN
       fi
     fi
+    
+    <%= dotenv %>
 
-    source /etc/profile.d/rvm.sh
     cd <%= engine.root %>
     <%= process.command %> >> $LOG_FILE 2>&1 &
 
