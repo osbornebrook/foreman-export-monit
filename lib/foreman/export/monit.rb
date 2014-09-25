@@ -34,7 +34,7 @@ module Foreman
 
       def wrapper_path_for(process_name)
         wrapper_location = ENV['WRAPPER_LOCATION'] ? File.expand_path(ENV['WRAPPER_LOCATION']) : location
-        File.join(wrapper_location, "#{app}-#{process_name}.sh")
+        File.join(wrapper_location, "#{process_name}.sh")
       end
 
       def manager_path
@@ -59,7 +59,7 @@ module Foreman
       end
 
       def check_file_for(process_name)
-        File.join(check, "#{app}.#{process_name}.restart")
+        File.join(check, "#{process_name}.restart")
       end
 
       def start_command(port, process_name, num)

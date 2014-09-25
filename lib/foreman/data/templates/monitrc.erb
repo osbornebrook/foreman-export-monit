@@ -1,7 +1,7 @@
 <% engine.each_process do |name, process| -%>
 <% 1.upto(engine.formation[name]) do |num| -%>
 <% port = engine.port_for(process, num) -%>
-check process <%= app %>-<%= name %>-<%= num %> with pidfile <%= pid_file_for(name, num) %>
+check process <%= name %>-<%= num %> with pidfile <%= pid_file_for(name, num) %>
   depends on <%= File.basename(check_file_for(name)) %>
   group <%= app %>-<%= name %>
   start program "<%= start_command(port, name, num) %>" as uid <%= user %>
